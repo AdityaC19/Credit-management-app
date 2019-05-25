@@ -1,0 +1,30 @@
+<h1>Transfer Credits to..</h1>
+<div class ="container">
+    <div class =" ui top attached segment">
+        <div class="ui divided items">
+            <div class="item">
+            <% credits.forEach(function(credit) { %>
+            <div class="image">
+                <img src="<%= credit.image %>" style ="width: 150px;height: 150px" alt="img">
+            </div>
+            <div class="content">
+                <a href="/credits/<%=credit._id%>" class ="header"><%= credit.name%></a>
+                    <div class="meta">
+                        <span class="cinema"><%=credit.email%></span>
+                    </div>
+                <div class="description">
+                    <p><%= credit.credits%></p>
+                </div>
+                <div class="extra">
+                    <div>
+                        <form action ="/credits/<%=credit._id%>" method ="GET">
+                            <button class ="ui right floated primary button">Transfer</button>
+                        </form>
+                     </div>
+                </div>
+            <% }) %>
+        </div>
+        </div>
+
+    </div>
+</div>

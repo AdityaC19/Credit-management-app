@@ -1,0 +1,26 @@
+<% include partials/header%>
+
+<div class ="ui main text container segment" style="text-align: center">
+    <div class ="ui huge header"><%= credit.name%></div>
+        <div class ="ui top attached segment">
+            <div class ="item">
+                <div class ="ui centered rounded image">
+                    <img src="<%= credit.image %>" alt="img">
+                </div>
+                <br></br>
+                <div class ="content" >
+                    Current Credits: <span><%= credit.credits %></span>
+                </div>
+                 <div class="meta">
+                        <span class="cinema"><%=credit.email%></span>
+                    </div>
+            </div>
+        </div>
+        
+    
+        <form action ="/credits/transfer" method ="GET">
+            <button class ="ui orange basic button">Transfer Credits</button>
+        </form>
+</div>
+
+<% include partials/footer%>
