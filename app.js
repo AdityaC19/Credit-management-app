@@ -47,10 +47,8 @@ app.get("/credits", function(req, res){
 //SUCCESS ROUTE
 app.get("/credits/transfer/:id", function(req,res){
     Credit.findById(req.params.id, function(err, credits){
-       
-            res.render("success");
-        
-   }); 
+       res.render("success");
+    }); 
 });
 
 
