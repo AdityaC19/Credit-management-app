@@ -5,7 +5,7 @@
     <div class =" ui top attached segment">
         <div class="ui divided items">
             <div class="item">
-            <% credits.forEach(function(credit) { %>
+            <% credits.forEach(function(credit, transfer) { %>
             <div class="image">
                 <img src="<%= credit.image %>" style ="width: 150px;height: 150px" alt="img">
             </div>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="extra">
                     <div>
-                        <form action ="/credits/success>" method ="GET">
+                        <form action ="/credits/transfer/<%=transfer._id%>>" method ="GET">
                             <button class ="ui right floated primary button">Transfer </button>
                         </form>
                      </div>

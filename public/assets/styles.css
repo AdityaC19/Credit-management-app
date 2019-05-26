@@ -3,6 +3,7 @@ h1{
     left: 12%;
     padding-top: 20px;
     font-size: 35px;
+    
 }
 div.image{
     width: 150px;
@@ -17,4 +18,7 @@ div.image{
     width: 250px;
     margin: 7px;
 } */
-
+body{
+    
+    padding-top: 50px;
+}

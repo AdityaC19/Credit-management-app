@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 
-mongoose.connect("mongodb://localhost:27017/creditApp", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://aditya:aditya@cluster0-wim3x.mongodb.net/test?retryWrites=true", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use("/public", express.static("public"));
 app.set("view engine", "ejs");
@@ -20,21 +20,16 @@ var creditSchema = new mongoose.Schema({
 var Credit = mongoose.model("Credit", creditSchema);
 
 // Credit.create({
-//    name: "Deborah",
-//    email: "deborah@gmail.com",
-//    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu-r0mf-PrHjeq9w1GH1MN6Ju1GM8ZbBlXVZIZe3GP0q6EuYpv",
+//    name: "John",
+//    email: "john@gmail.com",
+//    image: "https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1",
 //    credits: 100
 // });  
 
-// Credit.create({
-//     name: "Maddy",
-//     email: "mad1989L@yahoo.com",
-//     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu-r0mf-PrHjeq9w1GH1MN6Ju1GM8ZbBlXVZIZe3GP0q6EuYpv",
-//     credits: 100
-//  });
+
 
 app.get("/", function(req, res){
-    res.redirect("/credits"); z 
+    res.render("index"); 
     
 });
 
@@ -49,9 +44,15 @@ app.get("/credits", function(req, res){
     });
 });
 
-app.get("/credits/success", function(req,res){
-    res.render("success");
-})
+//SUCCESS ROUTE
+app.get("/credits/transfer/:id", function(req,res){
+    Credit.findById(req.params.id, function(err, credits){
+       
+            res.render("success");
+        
+   }); 
+});
+
 
 
 //TRANSFER ROUTE
@@ -76,20 +77,6 @@ app.get("/credits/:id", function(req, res){
          }
     }); 
  });
-
-
-
-//  app.get("/abc", function(req, res){
-//     Credit.find({}, function(err, credits){
-//         if(err){
-//             console.log(err);
-//         } else {
-//             res.render("credits", {credits: credits});            
-//         }
-//     });
-// });
-
- 
 
 app.listen("3000", function(){
     console.log("Server has started");
